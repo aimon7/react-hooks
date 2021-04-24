@@ -14,9 +14,17 @@ const Login = (props) => {
     // Here we want to this code to run each time we enter something in the inputs
     // So we pass an array of dependencies to track and re-evaluate
     useEffect(() => {
-        setFormIsValid(
-            enteredEmail.includes('@') && enteredPassword.trim().length > 6
-        );
+        const identifier = setTimeout(() => {
+            console.log(`Checking form validity!`);
+            setFormIsValid(
+                enteredEmail.includes('@') && enteredPassword.trim().length > 6
+            );
+        }, 500);
+
+        return () => {
+            console.log(`CleanUp`)
+            clearTimeout(identifier);
+        };
     }, [enteredEmail, enteredPassword])
 
     const emailChangeHandler = (event) => {
