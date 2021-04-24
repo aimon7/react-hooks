@@ -1,7 +1,8 @@
 import React from 'react';
 
 export const initialState = {
-    isLoggedIn: false
+    isLoggedIn: false,
+    onLogout: null,
 }
 
 const AuthContext = React.createContext(initialState);

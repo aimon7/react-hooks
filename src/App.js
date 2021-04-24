@@ -24,12 +24,14 @@ function App() {
     };
 
     const logoutHandler = () => {
+        localStorage.removeItem('isLoggedIn');
         setIsLoggedIn(false);
     };
 
     return (
         <AuthContext.Provider value={{
-            isLoggedIn: isLoggedIn
+            isLoggedIn: isLoggedIn,
+            onLogout: logoutHandler
         }}>
             <MainHeader onLogout={logoutHandler}/>
             <main>
